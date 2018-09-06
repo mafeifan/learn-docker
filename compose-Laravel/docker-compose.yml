@@ -1,0 +1,32 @@
+# 版本越高，支持的命令越多
+version: "3"
+services:
+  nginx:
+      # 必须指定 image 或 build 中的一个，其他是可选的
+      # build 用来指定一个包含Dockerfile文件的路径。一般是当前目录.
+      build: ./nginx
+      ports:
+        - "8081:80"
+      links:
+        - "php"
+      # 挂载数据卷 宿主机目录:容器目录  
+      volumes:
+        - ./opt:/opt
+
+  php:
+      build: ./php
+      ports:
+        - "9000:9000"
+      links:
+        - "mysql"
+      volumes:
+        - ./opt:/opt
+
+  mysql:
+      build: ./mysql
+      ports:
+        - "33060:3306"
+      volumes:
+        - ./opt/data/mysql:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: 123456
