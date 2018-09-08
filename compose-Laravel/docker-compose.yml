@@ -1,32 +1,35 @@
 # 版本越高，支持的命令越多
+# https://docs.docker.com/compose/compose-file/
 version: "3"
 services:
   nginx:
       # 必须指定 image 或 build 中的一个，其他是可选的
-      # build 用来指定一个包含Dockerfile文件的路径。一般是当前目录.
-      build: ./nginx
+      # build 用来指定一个包含 Dockerfile 文件的路径。一般是当前目录.
+      build: ./docker-build/nginx
       ports:
-        - "8081:80"
+        - "8071:80"
       links:
         - "php"
       # 挂载数据卷 宿主机目录:容器目录  
       volumes:
-        - ./opt:/opt
+        - ./docker-build/log/nginx:/var/log/nginx
+        # - ./docker-build/nginx:/etc/nginx
+        - ./www/public:/www/public
 
   php:
-      build: ./php
+      build: ./docker-build/php
       ports:
         - "9000:9000"
       links:
         - "mysql"
       volumes:
-        - ./opt:/opt
+        - ./docker-build/opt:/opt
 
   mysql:
-      build: ./mysql
+      build: ./docker-build/mysql
       ports:
         - "33060:3306"
       volumes:
-        - ./mysql/data:/var/lib/mysql
+        - ./docker-build/mysql/data:/var/lib/mysql
       environment:
         MYSQL_ROOT_PASSWORD: 123456

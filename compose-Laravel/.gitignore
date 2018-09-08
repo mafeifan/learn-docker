@@ -1,6 +1,4 @@
 .idea
 
-docker-build/opt/data/mysql/*
-docker-build/opt/log/nginx/*
-!docker-build/opt/log/nginx/.gitkeep
-docker-build/opt/code/*
+docker-build/log/nginx/*
+docker-build/mysql/data/*
