@@ -1,3 +1,10 @@
+# 安装
+
+
+# TODO
+1. mysql配置文件
+2. php配置文件
+
 
 # 安装PHP
 默认是php7.0.31，如果需要装其他版本，修改php/Dockerfile中的第一行

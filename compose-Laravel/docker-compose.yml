@@ -27,6 +27,6 @@ services:
       ports:
         - "33060:3306"
       volumes:
-        - ./opt/data/mysql:/var/lib/mysql
+        - ./mysql/data:/var/lib/mysql
       environment:
         MYSQL_ROOT_PASSWORD: 123456
