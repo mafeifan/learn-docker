@@ -14,7 +14,7 @@ services:
       volumes:
         - ./docker-build/log/nginx:/var/log/nginx
         # - ./docker-build/nginx:/etc/nginx
-        - ./www/public:/www/public
+        - ./www:/www
 
   php:
       build: ./docker-build/php
@@ -23,7 +23,7 @@ services:
       links:
         - "mysql"
       volumes:
-        - ./www/public:/www/public
+        - ./www:/www
 
   mysql:
       build: ./docker-build/mysql
