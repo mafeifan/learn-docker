@@ -23,7 +23,7 @@ services:
       links:
         - "mysql"
       volumes:
-        - ./docker-build/opt:/opt
+        - ./www/public:/www/public
 
   mysql:
       build: ./docker-build/mysql
