@@ -1,6 +1,6 @@
 FROM nginx:1.15
 
-RUN mkdir -p /www/public
+RUN mkdir -p /www
 
 COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf

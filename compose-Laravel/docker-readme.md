@@ -10,14 +10,13 @@
 FROM php:x.x.x-fpm
 关于配置文件，php容器内没有主配置文件，需要从源码中获取，并添加映射路径/usr/local/etc/php/conf.d
 3. 关于MySQL连接配置
-宿主机，端口默认33060，host为localhost
-容器之间有自己的网络。.env中, host填写docker内的网络IP，如172.24.0.2
-端口3306。具体查看方法：
-查看容器详情
-`docker inspect compose-laravel_mysql_1`
-找到 IPAddress
-或者进入容器`docker exec -it compose-laravel_mysql_1 bash`，执行
- `/sbin/ip route|awk '/default/ { print $3 }'`
+宿主机上使用navicat工具连接，host为localhost，端口默认33060。
+项目代码中连接，host填写mysql或docker中的IP，端口3306。
 
-### 参考：
-https://segmentfault.com/a/1190000013020851
+> IP具体查看方法：
+
+查看容器详情
+`docker inspect compose-laravel_mysql`
+找到 IPAddress
+或者进入容器 `docker exec -it compose-laravel_mysql bash`，执行
+ `/sbin/ip route|awk '/default/ { print $3 }'`
