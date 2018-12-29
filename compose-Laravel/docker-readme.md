@@ -25,3 +25,5 @@ https://github.com/docker-library/php/issues/399
 找到 IPAddress
 或者进入容器 `docker exec -it <mysql-container> bash`，执行
  `/sbin/ip route|awk '/default/ { print $3 }'`
+重启 php-fpm
+`RUN kill -USR2 1 `
