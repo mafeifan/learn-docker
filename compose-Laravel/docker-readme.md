@@ -6,7 +6,7 @@
 ### 注意
 
 1. 如果修改了某一 dockerfile 文件后要重建镜像
-`docker-compose build`
+`docker-compose up -d --build`
 
 2. 关于PHP，默认是7.0.1，如果需要安装其他版本，修改php/Dockerfile中的第一行
 FROM php:x.x.x-fpm
