@@ -25,13 +25,13 @@ RUN apt-get install -y libmcrypt-dev && \
 #COPY extension/yac.ini  /usr/local/etc/php/conf.d
 #COPY php.ini  /usr/local/etc/php/
 
-# 安装 composer
+# install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# 设置中国源
-# 在这个容器启动后可以执行 docker exec compose-laravel_php_1 composer install -vvv
+# set china source
+# when docker running run `docker exec compose-laravel_php_1 composer install -vvv`
 RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
 
-# 设置工作目录，使得登录后直接切换到该目录
+# set work dir
 WORKDIR /www
 
