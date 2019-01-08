@@ -1,3 +1,6 @@
+# https://hub.docker.com/_/percona
+# Percona Server是MySQL的一个分支，类似于MariaDB，是完全与MySQL兼容的一款独立的数据库产品
+
 # 拉镜像
 docker pull percona/percona-xtradb-cluster:5.7
 

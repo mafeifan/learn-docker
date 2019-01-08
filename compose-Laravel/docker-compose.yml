@@ -25,9 +25,9 @@ services:
         - .:/www
 
   mysql:
-      build: ./docker-build/mysql
+      image: 'mysql:5.6'
       ports:
-        - "33060:3306"
+        - "33066:3306"
       volumes:
         - ./docker-build/mysql/data:/var/lib/mysql
       environment:
