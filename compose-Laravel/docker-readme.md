@@ -21,6 +21,8 @@ https://github.com/laradock/laradock/issues/610
 5. 不重启容器重启加载php.ini。 `docker exec -it <php-container> kill -USR2 1`
 https://github.com/docker-library/php/issues/399
 
+6. 如果需要备份mysql数据库，可以`docker exec -it compose-laravel_mysql_1  mysqldump -uroot -p123456 --databases ngb_inventory | gzip > demo.gz`
+具体查 mysqldump 的命令参数
 
 > IP具体查看方法：
 
