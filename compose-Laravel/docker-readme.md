@@ -1,3 +1,8 @@
+### 安装
+1. 保持docker-build和docker-compose文件和项目文件平级
+2. 复制.env.example为.env并修改相关配置，比如您的PHP项目需要支持MongoDB，则将
+PHP_INSTALL_MONGO修改为true。
+
 ### 运行
 
 1. 检查 docker-compose 中的端口，避免与本地的冲突
@@ -5,7 +10,7 @@
 
 ### 注意
 
-1. 如果修改了某一 dockerfile 文件后要重建镜像
+1. 如果修改了某一dockerfile文件后要重建镜像
 `docker-compose up -d --build`
 
 2. 关于PHP，默认是7.0.1，如果需要安装其他版本，修改php/Dockerfile中的第一行

@@ -1,4 +1,5 @@
 FROM nginx:1.15
+LABEL maintainer="mafeifan <mafeifan@qq.com>"
 
 RUN mkdir -p /www
 
