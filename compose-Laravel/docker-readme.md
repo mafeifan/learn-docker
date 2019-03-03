@@ -1,5 +1,7 @@
+适合本地开发使用的PHP环境
+
 ### 安装
-1. 保持docker-build和docker-compose文件和项目文件平级
+1. 保持docker-build目录及docker-compose文件与项目文件平级
 2. 复制.env.example为.env并修改相关配置，比如您的PHP项目需要支持MongoDB，则将
 PHP_INSTALL_MONGO修改为true。
 

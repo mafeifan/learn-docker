@@ -18,6 +18,7 @@ RUN apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+# inspired by https://github.com/laradock/laradock/blob/master/php-fpm/Dockerfile
 ###########################################################################
 # PHP MongoDB EXTENSION
 ###########################################################################
@@ -44,8 +45,8 @@ ARG INSTALL_REDIS=false
 RUN if [ ${INSTALL_REDIS} = true ]; then \
     # Install PHP Redis Extension
     printf "\n" | pecl install -o -f redis \
-    &&  rm -rf /tmp/pear \
-    &&  docker-php-ext-enable redis \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable redis \
 ;fi
 
 # xdebug
@@ -67,10 +68,10 @@ RUN apt-get install -y libmcrypt-dev && \
 ARG INSTALL_COMPOSER=false
 RUN if [ ${INSTALL_COMPOSER} = true ]; then \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    # set China source
+    # when docker is running, run `docker exec compose-laravel_php_1 composer install -vvv`
     composer config -g repo.packagist composer https://packagist.laravel-china.org \
 ;fi
-# set china source
-# when docker running run `docker exec compose-laravel_php_1 composer install -vvv`
 
 # set work dir
 WORKDIR /www
