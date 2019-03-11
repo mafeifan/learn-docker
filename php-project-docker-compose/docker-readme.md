@@ -8,7 +8,7 @@ PHP_INSTALL_MONGO修改为true。
 ### 运行
 
 1. 检查 docker-compose 中的端口，避免与本地的冲突
-2. 执行 `docker-compose up` 启动相关容器
+2. 执行 `docker-compose up` 构建镜像并启动相关容器
 
 ### 注意
 
@@ -38,3 +38,8 @@ https://github.com/docker-library/php/issues/399
 找到 IPAddress
 或者进入容器 `docker exec -it <mysql-container> bash`，执行
  `/sbin/ip route|awk '/default/ { print $3 }'`
+ 
+ ### TODO
+ 1. 测试xdebug兼容性
+ 2. 支持Laravel和Symfony项目
+ 3. 如何动态启动某service
