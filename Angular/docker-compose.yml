@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  node:
+    container_name: oneportal
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '4209:4201'
