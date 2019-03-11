@@ -42,4 +42,5 @@ https://github.com/docker-library/php/issues/399
  ### TODO
  1. 测试xdebug兼容性
  2. 支持Laravel和Symfony项目
- 3. 如何动态启动某service
+ 3. 添加php.ini
+ 4. 如何动态启动某service
