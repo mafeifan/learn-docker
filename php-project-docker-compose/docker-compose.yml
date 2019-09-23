@@ -27,7 +27,7 @@ services:
         - .:/www
 
   mysql:
-      image: 'mysql:5.6'
+      image: 'mysql:5.7'
       ports:
         - "${DOCKER_MYSQL_PORT-33060}:3306"
       volumes:

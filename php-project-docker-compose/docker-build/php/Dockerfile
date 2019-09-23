@@ -3,10 +3,24 @@ LABEL maintainer="mafeifan <mafeifan@qq.com>"
 
 ADD apt-list /opt/
 
-# use China sources to boost
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak \ 
-	&& cat /opt/apt-list >/etc/apt/sources.list \
-	&& apt-get update
+# https://www.cnblogs.com/xkjy/p/11477733.html
+RUN echo "deb [check-valid-until=no] http://cdn-fastly.deb.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie.list
+RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+RUN apt-get -o Acquire::Check-Valid-Until=false update
+RUN apt-get install -y pigz
+
+#RUN apt-get update
+#
+#RUN gpg --recv-keys AA8E81B4331F7F50
+#RUN gpg --export AA8E81B4331F7F50 | apt-key add -
+#
+#RUN apt-key update
+#
+## use China sources to boost
+#RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak \
+#	&& cat /opt/apt-list >/etc/apt/sources.list \
+#	&& apt-get update
 
 # support gd2 and iconv
 # see https://hub.docker.com/_/php
@@ -70,7 +84,7 @@ RUN if [ ${INSTALL_COMPOSER} = true ]; then \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     # set China source
     # when docker is running, run `docker exec compose-laravel_php_1 composer install -vvv`
-    composer config -g repo.packagist composer https://packagist.laravel-china.org \
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
 ;fi
 
 # set work dir
