@@ -1,0 +1,8 @@
+[Sat Feb 16 12:28:18.619831 2019] [authz_core:error] [pid 16] [client 172.22.0.1:33518] AH01630: client denied by server configuration: /www/web/
+[Sat Feb 16 12:28:21.130041 2019] [authz_core:error] [pid 16] [client 172.22.0.1:33518] AH01630: client denied by server configuration: /www/web/
+[Sat Feb 16 12:29:03.367173 2019] [authz_core:error] [pid 18] [client 172.22.0.1:33568] AH01630: client denied by server configuration: /www/web/
+[Sat Feb 16 12:31:50.588166 2019] [authz_core:error] [pid 20] [client 172.22.0.1:33742] AH01630: client denied by server configuration: /www/web/web
+[Sat Feb 16 12:31:53.430870 2019] [authz_core:error] [pid 20] [client 172.22.0.1:33742] AH01630: client denied by server configuration: /www/web/web
+[Sat Feb 16 12:36:45.891704 2019] [authz_core:error] [pid 16] [client 172.22.0.1:34036] AH01630: client denied by server configuration: /www/web/
+[Sat Feb 16 12:36:48.215130 2019] [authz_core:error] [pid 16] [client 172.22.0.1:34036] AH01630: client denied by server configuration: /www/web/
+[Sat Feb 16 12:36:50.298214 2019] [authz_core:error] [pid 16] [client 172.22.0.1:34036] AH01630: client denied by server configuration: /www/web/
