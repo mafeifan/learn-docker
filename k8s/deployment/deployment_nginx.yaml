@@ -1,11 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx-deployment # 资源的名字，在同一个namespace中必须唯一
   labels:
     app: nginx
 spec: # 创建了一个 ReplicaSet，负责启动三个 nginx Pods
   replicas: 3
+  strategy:
+      rollingUpdate:   	   # 由于replicas为3,则整个升级,pod个数在2-4个之间
+        maxSurge: 1          # 滚动升级时会先启动1个pod
+        maxUnavailable: 1    # 滚动升级时允许的最大Unavailable的pod个数
   selector:
     matchLabels:
       app: nginx
