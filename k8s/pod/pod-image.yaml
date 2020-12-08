@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-image
+  namespace: finley
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.17.1
+    # IfNotPresent | Always | Never
+    imagePullPolicy: IfNotPresent # 拉取策略 kubectl explain pods.spec.containers.imagePullPolicy
+    ports:
+    - containerPort: 80 # 对service暴露端口
+#  - name: busybox
+#    image: busybox:1.30
+#    # 覆盖 Dockerfile中的ENTRYPOINT
+#    command: ["/bin/sh", "-c", "touch /tmp/hello.txt"]
+#    env:
+#      # kubectl exec pod-image -c busybox -it /bin/sh
+#      # echo $username
+#      - name: "username"
+#        value: "admin"
+#      - name: "password"
