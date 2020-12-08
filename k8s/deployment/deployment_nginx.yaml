@@ -7,7 +7,7 @@ metadata:
 spec: # 创建了一个 ReplicaSet，负责启动三个 nginx Pods
   replicas: 3
   strategy:
-      rollingUpdate:   	   # 由于replicas为3,则整个升级,pod个数在2-4个之间
+      rollingUpdate:   	     # 由于replicas为3,则整个升级,pod个数在2-4个之间
         maxSurge: 1          # 滚动升级时会先启动1个pod
         maxUnavailable: 1    # 滚动升级时允许的最大Unavailable的pod个数
   selector:
