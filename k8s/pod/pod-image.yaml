@@ -13,6 +13,11 @@ spec:
     imagePullPolicy: IfNotPresent # 拉取策略 kubectl explain pods.spec.containers.imagePullPolicy
     ports:
     - containerPort: 80 # 对service暴露端口
+    resources:
+      - limits:
+          cpu: "2"
+          # Mi表示（1Mi=1024×1024）,M表示（1M=1000×1000)
+          memory: "10Gi"
   - name: busybox
     image: busybox:1.30
     # 覆盖 Dockerfile中的ENTRYPOINT
