@@ -13,13 +13,13 @@ spec:
     imagePullPolicy: IfNotPresent # 拉取策略 kubectl explain pods.spec.containers.imagePullPolicy
     ports:
     - containerPort: 80 # 对service暴露端口
-#  - name: busybox
-#    image: busybox:1.30
-#    # 覆盖 Dockerfile中的ENTRYPOINT
-#    command: ["/bin/sh", "-c", "touch /tmp/hello.txt"]
-#    env:
-#      # kubectl exec pod-image -c busybox -it /bin/sh
-#      # echo $username
-#      - name: "username"
-#        value: "admin"
-#      - name: "password"
+  - name: busybox
+    image: busybox:1.30
+    # 覆盖 Dockerfile中的ENTRYPOINT
+    command: ["/bin/sh", "-c", "touch /tmp/hello.txt;while true;do /bin/echo $(date +%T) >> /tmp/hello.txt; sleep 3; done;"]
+    env:
+      # kubectl exec pod-image -c busybox -it /bin/sh
+      # echo $username
+      - name: "username"
+        value: "admin"
+      - name: "password"
