@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+spec:
+  type: NodePort
+  selector:
+    greeting: hello
+    department: world
+  ports:
+    - protocol: TCP
+      port: 60000
+      # 当请求发送到 TCP 端口 60000 上的 Service 时，它将被转发到 TCP 端口 50000 上的某个成员 Pod
+      targetPort: 50000

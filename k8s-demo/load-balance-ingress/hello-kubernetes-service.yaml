@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-kubernetes
+spec:
+  # 同时具有 greeting: hello 标签和 department: kubernetes 标签的任何 Pod 都是 Service 的成员。
+  type: NodePort
+  selector:
+    greeting: hello
+    department: kubernetes
+  ports:
+    # 当请求发送到 TCP 端口 80 上的 Service 时，它将被转发到 TCP 端口 8080 上的某个成员 Pod。
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
