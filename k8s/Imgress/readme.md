@@ -16,3 +16,10 @@ kubectl describe pod
 
 发现还是网络问题！！
 
+kubectl get ing ingress-http
+
+kubectl describe ing ingress-http
+
+kubectl get svc -n ingress-nginx
+
+http://tomcat.itheima.com:31303
