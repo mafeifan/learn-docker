@@ -8,6 +8,10 @@ https://github.com/AliyunContainerService/k8s-for-docker-desktop
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
 
+验证
+kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+
+排错
 kubectl describe pod
 
 发现还是网络问题！！
