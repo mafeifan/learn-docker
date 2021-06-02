@@ -1,6 +1,6 @@
 kubectl create -f service/pod_nginx.yml
 
-# 默认是ClusterType, 可以实现外部访问
+# 默认是ClusterType, 定义type=NodePort可以实现外部访问
 kubectl expose pods nginx-pod --type=NodePort
 
 # 或者通过yaml创建service

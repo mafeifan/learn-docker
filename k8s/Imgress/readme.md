@@ -1,0 +1,14 @@
+## Windows
+
+Kube 版本 1.19.7
+
+https://github.com/AliyunContainerService/k8s-for-docker-desktop
+
+让安装
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
+
+kubectl describe pod
+
+发现还是网络问题！！
+
