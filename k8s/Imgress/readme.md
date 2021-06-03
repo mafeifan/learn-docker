@@ -8,6 +8,12 @@ https://github.com/AliyunContainerService/k8s-for-docker-desktop
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml
 
+官方是让下载最新的
+
+https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.46.0/deploy/static/provider/cloud/deploy.yaml
+
 验证
 kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
 
