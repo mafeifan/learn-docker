@@ -66,17 +66,14 @@ Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.7", GitCom
 5. 打开 /etc/hosts
 添加`127.0.0.1 ingress.finley.demo`
 
-
 6. 见证奇迹时刻
 
 浏览器打开 `http://ingress.finley.demo/apple` 页面显示 apple
 浏览器打开 `http://ingress.finley.demo/banana` 页面显示 banana
 其实就是个代理
 
-
 一图看流程
 ![](https://gitee.com/Finley/upic/raw/master/picGo/20210603144746.png)
-
 
 ## 参考
 
