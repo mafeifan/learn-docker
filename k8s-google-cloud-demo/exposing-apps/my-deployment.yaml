@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  selector:
+    matchLabels:
+      app: metrics
+      department: sales
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: metrics
+        department: sales
+    spec:
+      containers:
+        # 默认暴露的端口是8080
+        # https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/blob/master/hello-app/main.go
+        - name: hello
+          image: "gcr.io/google-samples/hello-app:2.0"
