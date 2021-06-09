@@ -1,0 +1,59 @@
+# Copyright 2018 Google Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# [START container_custom_metrics_direct_deployment]
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: custom-metric-sd
+  name: custom-metric-sd
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: custom-metric-sd
+  template:
+    metadata:
+      labels:
+        run: custom-metric-sd
+    spec:
+      containers:
+      - command: ["./sd-dummy-exporter"]
+        args:
+        - --use-new-resource-model=true
+        - --use-old-resource-model=false
+        - --metric-name=custom-metric
+        - --metric-value=40
+        - --pod-name=$(POD_NAME)
+        - --namespace=$(NAMESPACE)
+        image: gcr.io/google-samples/sd-dummy-exporter:v0.3.0
+        name: sd-dummy-exporter
+        resources:
+          requests:
+            cpu: 100m
+        env:
+        # save Kubernetes metadata as environment variables for use in metrics
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+# [END container_custom_metrics_direct_deployment]

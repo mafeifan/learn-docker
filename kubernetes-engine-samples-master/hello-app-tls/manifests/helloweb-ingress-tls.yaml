@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloweb
+  labels:
+    app: hello
+  annotations:
+    kubernetes.io/ingress.allow-http: "false" # disable HTTP
+spec:
+  tls:
+    - secretName: yourdomain-tls
+  backend:
+    serviceName: helloweb-backend
+    servicePort: 443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloweb-backend
+  labels:
+    app: hello
+  annotations:
+    # Use app-protocols annotation with your ports[0].name:
+    # - "HTTPS": Encrypts traffic between the load balancer and your app. Your
+    #            app does not have to present a valid TLS cert, you can use
+    #            self-signed certs as in this hello-app-tls example.
+    # - "HTTP2": If the backend app supports http2 (hello-app-tls does), use
+    #            this to have the load balancer proxy traffic using http2. This
+    #            also incudes the "HTTPS" option implicity and provides TLS
+    #            between the load balancer and your app.
+    service.alpha.kubernetes.io/app-protocols: '{"helloweb-tls":"HTTPS"}'
+spec:
+  type: NodePort
+  selector:
+    app: hello
+    tier: web
+  ports:
+  - name: helloweb-tls # port name must match the value in the annotation
+    port: 443
+    targetPort: 8443

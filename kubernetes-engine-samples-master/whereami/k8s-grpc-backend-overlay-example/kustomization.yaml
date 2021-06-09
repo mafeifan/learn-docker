@@ -1,0 +1,8 @@
+nameSuffix: "-backend"
+commonLabels:
+  app: whereami-grpc-backend
+bases:
+- ../k8s-grpc
+patches:
+- cm-flag.yaml
+- service-type.yaml
