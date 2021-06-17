@@ -1,0 +1,24 @@
+# 在一个Pod中准备两个容器nginx和busybox，然后声明一个Volume分别挂在到两个容器的目录中，然后nginx容器负责向Volume中写日志，busybox中通过命令将日志内容读到控制台。
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-emptydir
+spec:
+  volumes: # 声明volume， name为logs-volume，类型为emptyDir
+    - name: logs-volume
+      emptyDir: {}
+  containers:
+    - name: nginx
+      image: nginx:1.14-alpine
+      ports:
+        - containerPort: 80
+      volumeMounts:  # 将logs-volume挂在到nginx容器中，对应的目录为 /var/log/nginx
+        - name: logs-volume
+          mountPath: /var/log/nginx
+    - name: busybox
+      image: busybox:1.30
+      command: ["/bin/sh","-c","tail -f /logs/access.log"] # 初始命令，动态读取指定文件中内容
+      volumeMounts:  # 将logs-volume 挂在到busybox容器中，对应的目录为 /logs
+        - name: logs-volume
+          mountPath: /logs
