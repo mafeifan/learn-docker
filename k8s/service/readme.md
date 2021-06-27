@@ -14,7 +14,7 @@ kubectl get svc -o wide
 http://localhost:30002/
 
 # 只有cluster内部可以访问
-`nginx-pod          ClusterIP   10.103.190.130   <none>        80/TCP         5s`
+`nginx-pod   ClusterIP  10.103.190.130 <none>  80/TCP  5s`
 
 # NodePort, 可以实现外部访问
 kubectl expose pods nginx-pod --type=NodePort
