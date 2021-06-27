@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-wordpress
+  labels:
+    app: wordpress
+spec:
+  selector:
+    app: wordpress
+    tier: frontend
+  type: NodePort # service类型
+  ports:
+    - port: 80 # 默认情况下，为了方便起见，`targetPort` 被设置为与 `port` 字段相同的值。
+      nodePort: 30012 # 指定绑定的node的端口(默认的取值范围是:30000-32767), 如果不指定，会默认分配
+      targetPort: 80
