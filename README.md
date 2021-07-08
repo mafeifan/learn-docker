@@ -1,4 +1,4 @@
-自己收集并使用的Docker例子
+自己收集并使用的Docker及K8s例子
 
 * Angular， angular前端项目中使用docker
 * Node，docker里跑Express
